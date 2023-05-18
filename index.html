@@ -10,14 +10,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- vue.js 2 -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
-    <style>
-      .grid-layout {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        grid-gap: 1px;
-        justify-content: center;
-      }
-    </style>
+    <script src="./menus.js"></script>
+    <link rel="stylesheet" href="./base.css" />
   </head>
 
   <body>
@@ -29,89 +23,14 @@
 
       <!-- filters -->
       <div class="flex flex-wrap px-5">
-        <div
-          class="border mx-1 my-1 px-2 rounded"
-          :class="[selectedFilter === 'all'? 'bg-red-300' : '']"
-          @click="selectFilter('all')"
-        >
-          전부
-        </div>
-        <div
-          class="border mx-1 my-1 px-2 rounded"
-          :class="[selectedFilter === 'coffee'? 'bg-red-300' : '']"
-          @click="selectFilter('coffee')"
-        >
-          커피
-        </div>
-        <div
-          class="border mx-1 my-1 px-2 rounded"
-          :class="[selectedFilter === 'latte'? 'bg-red-300' : '']"
-          @click="selectFilter('latte')"
-        >
-          라떼
-        </div>
-        <div
-          class="border mx-1 px-2 my-1 rounded"
-          :class="[selectedFilter === 'dutch'? 'bg-red-300' : '']"
-          @click="selectFilter('dutch')"
-        >
-          더치
-        </div>
-        <div
-          class="border mx-1 px-2 my-1 rounded"
-          :class="[selectedFilter === 'smoothie'? 'bg-red-300' : '']"
-          @click="selectFilter('smoothie')"
-        >
-          스무디
-        </div>
-        <div
-          class="border mx-1 px-2 my-1 rounded"
-          :class="[selectedFilter === 'ade'? 'bg-red-300' : '']"
-          @click="selectFilter('ade')"
-        >
-          에이드
-        </div>
-        <div
-          class="border mx-1 px-2 my-1 rounded"
-          :class="[selectedFilter === 'fruitJuice'? 'bg-red-300' : '']"
-          @click="selectFilter('fruitJuice')"
-        >
-          과일쥬스
-        </div>
-        <div
-          class="border mx-1 px-2 my-1 rounded"
-          :class="[selectedFilter === 'tea'? 'bg-red-300' : '']"
-          @click="selectFilter('tea')"
-        >
-          티
-        </div>
-        <div
-          class="border mx-1 px-2 my-1 rounded"
-          :class="[selectedFilter === 'frappe'? 'bg-red-300' : '']"
-          @click="selectFilter('frappe')"
-        >
-          프라페
-        </div>
-        <div
-          class="border mx-1 px-2 my-1 rounded"
-          :class="[selectedFilter === 'bingsu'? 'bg-red-300' : '']"
-          @click="selectFilter('bingsu')"
-        >
-          빙수
-        </div>
-        <div
-          class="border mx-1 px-2 my-1 rounded"
-          :class="[selectedFilter === 'bread'? 'bg-red-300' : '']"
-          @click="selectFilter('bread')"
-        >
-          빵
-        </div>
-        <div
-          class="border mx-1 px-2 my-1 rounded"
-          :class="[selectedFilter === 'additional'? 'bg-red-300' : '']"
-          @click="selectFilter('additional')"
-        >
-          추가메뉴
+        <div v-for="(value, key) in kindOfList">
+          <div
+            class="border mx-1 my-1 px-2 rounded"
+            :class="[selectedFilter === key? 'bg-red-300' : '']"
+            @click="selectFilter(key)"
+          >
+            {{value}}
+          </div>
         </div>
       </div>
 
@@ -158,273 +77,21 @@
         data: {
           selectedFilter: "all",
           dearMondLogo: "./images/dearmond_logo.jpeg",
-          menus: [
-            {
-              kindOf: "coffee",
-              name: "에스프레소",
-              menuImage: "./images/menus/mock.jpg",
-              price: "3.5",
-            },
-            {
-              kindOf: "coffee",
-              name: "아메리카노",
-              menuImage: "./images/menus/coffee/ice_americano.jpg",
-              price: "3.5",
-            },
-            {
-              kindOf: "coffee",
-              name: "카페라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "3.8",
-            },
-            {
-              kindOf: "coffee",
-              name: "카푸치노",
-              menuImage: "./images/menus/mock.jpg",
-              price: "3.8",
-            },
-            {
-              kindOf: "coffee",
-              name: "아포가토",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.8",
-            },
-            {
-              kindOf: "coffee",
-              name: "코코넛 커피",
-              menuImage: "./images/menus/mock.jpg",
-              price: "5.0",
-            },
-            {
-              kindOf: "coffee",
-              name: "꿀 아메리카노",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.0",
-            },
-            {
-              kindOf: "coffee",
-              name: "돌체 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.0",
-            },
-            {
-              kindOf: "coffee",
-              name: "아이스크림 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.5",
-            },
-            {
-              kindOf: "coffee",
-              name: "카라멜 마끼야또",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.5",
-            },
-            {
-              kindOf: "coffee",
-              name: "헤이즐럿 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.0",
-            },
-            {
-              kindOf: "latte",
-              name: "녹차 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.0",
-            },
-            {
-              kindOf: "latte",
-              name: "녹차 초코 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.0",
-            },
-            {
-              kindOf: "latte",
-              name: "딸기 달콤 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.0",
-            },
-            {
-              kindOf: "latte",
-              name: "망고 달콤 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.0",
-            },
-            {
-              kindOf: "latte",
-              name: "미숫가루 라떼 (18가지 곡물)",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.5",
-            },
-            {
-              kindOf: "latte",
-              name: "민트초코 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.0",
-            },
-            {
-              kindOf: "latte",
-              name: "바닐라 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.0",
-            },
-            {
-              kindOf: "latte",
-              name: "바닐라빈 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.5",
-            },
-            {
-              kindOf: "latte",
-              name: "바닐라빈 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.5",
-            },
-            {
-              kindOf: "latte",
-              name: "밤/고구마 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.5",
-            },
-            {
-              kindOf: "latte",
-              name: "초코 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.0",
-            },
-            {
-              kindOf: "latte",
-              name: "토피넛 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.5",
-            },
-            {
-              kindOf: "dutch",
-              name: "더치 커피",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.0",
-            },
-            {
-              kindOf: "dutch",
-              name: "더치 카페라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.3",
-            },
-            {
-              kindOf: "dutch",
-              name: "더치 카푸치노",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.3",
-            },
-            {
-              kindOf: "dutch",
-              name: "더치 바닐라 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.3",
-            },
-            {
-              kindOf: "dutch",
-              name: "더치 헤이즐럿",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.3",
-            },
-            {
-              kindOf: "dutch",
-              name: "카라멜 마끼야또",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.5",
-            },
-            {
-              kindOf: "dutch",
-              name: "더치 아포카토",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.5",
-            },
-            {
-              kindOf: "dutch",
-              name: "더치 코코넛",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.8",
-            },
-            {
-              kindOf: "dutch",
-              name: "더치 카페모카",
-              menuImage: "./images/menus/mock.jpg",
-              price: "5.0",
-            },
-            {
-              kindOf: "dutch",
-              name: "바닐라빈 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "5.0",
-            },
-            {
-              kindOf: "dutch",
-              name: "아이스크림 라떼",
-              menuImage: "./images/menus/mock.jpg",
-              price: "5.0",
-            },
-
-            {
-              kindOf: "smoothie",
-              name: "딸기 스무디",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.5",
-            },
-            {
-              kindOf: "smoothie",
-              name: "망고 스무디",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.5",
-            },
-            {
-              kindOf: "smoothie",
-              name: "키위 스무디",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.5",
-            },
-            {
-              kindOf: "smoothie",
-              name: "복숭아 스무디",
-              menuImage: "./images/menus/smoothie/peach_smoothie.jpeg",
-              price: "4.5",
-            },
-            {
-              kindOf: "smoothie",
-              name: "플레인요거트 스무디",
-              menuImage: "./images/menus/mock.jpg",
-              price: "5.0",
-            },
-            {
-              kindOf: "smoothie",
-              name: "딸기 요거트 스무디",
-              menuImage: "./images/menus/smoothie/strawberry_smoothie.jpeg",
-              price: "5.0",
-            },
-            {
-              kindOf: "smoothie",
-              name: "블루베리 요거트",
-              menuImage: "./images/menus/mock.jpg",
-              price: "5.0",
-            },
-            {
-              kindOf: "smoothie",
-              name: "딸기 밀크 쉐이크",
-              menuImage: "./images/menus/mock.jpg",
-              price: "5.3",
-            },
-            {
-              kindOf: "smoothie",
-              name: "밀크 쉐이크",
-              menuImage: "./images/menus/mock.jpg",
-              price: "5.3",
-            },
-            {
-              kindOf: "ade",
-              name: "레몬 (수제청)",
-              menuImage: "./images/menus/mock.jpg",
-              price: "4.5",
-            },
-          ],
+          kindOfList: {
+            all: "전부",
+            coffee: "커피",
+            latte: "라떼",
+            dutch: "더치",
+            smoothie: "스무디",
+            ade: "에이드",
+            fruitJuice: "과일쥬스",
+            tea: "티",
+            frappe: "프라페",
+            bingsu: "빙수",
+            bread: "빵",
+            additional: "추가메뉴",
+          },
+          menus: menuArray,
         },
         methods: {
           selectFilter(kindOf) {
