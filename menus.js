@@ -772,7 +772,7 @@ const menuArray = [
   {
     kindOf: "bread",
     name: "크로플",
-    menuImage: "./images/menus/bread/크로플_누끼.png",
+    menuImage: "./images/menus/bread/crople.png",
     price: "8.5",
     new: false,
     recommended: false,
