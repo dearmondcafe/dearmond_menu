@@ -25,7 +25,7 @@
         <div v-for="(value, key) in kindOfList">
           <div
             class="border mx-1 my-1 px-2 rounded"
-            :class="[selectedFilter === key? 'bg-red-300' : '']"
+            :class="[selectedFilter === key? 'bg-green-300' : '']"
             @click="selectFilter(key)"
           >
             {{value}}
@@ -81,7 +81,7 @@
       </div>
 
       <!-- basket -->
-      <div class="fixed right-5 bottom-5 bg-gray-300 rounded p-1">
+      <div class="fixed right-5 bottom-5 bg-green-300 rounded p-1">
         <div v-for="(item, index) in basket"
         @click="removeItemAtBasket(index)">
           <span>{{item.name}}</span>
