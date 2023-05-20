@@ -18,6 +18,7 @@ let app = new Vue({
       additional: "추가메뉴",
     },
     menus: menuArray,
+    basket: [],
   },
   methods: {
     selectFilter(kindOf) {
@@ -25,9 +26,19 @@ let app = new Vue({
     },
     filteredMenus() {
       if (this.selectedFilter === "all") return this.menus;
-      return this.menus.filter(
-        (menu) => menu.kindOf === this.selectedFilter
-      )
+      return this.menus.filter((menu) => menu.kindOf === this.selectedFilter);
+    },
+    addItemToBasket(menu) {
+      this.basket.push(menu);
+      console.log(this.basket);
+    },
+    caculateTotalPrice() {
+      return this.basket.reduce((acc, cur) => {
+        return bigDecimal.add(acc, cur.price);
+      }, 0);
+    },
+    removeItemAtBasket(index) {
+      this.basket.splice(index, 1);
     },
   },
 });
