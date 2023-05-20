@@ -10,7 +10,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- vue.js 2 -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
-    <script src="./menus.js"></script>
     <link rel="stylesheet" href="./base.css" />
   </head>
 
@@ -47,6 +46,13 @@
             <span class="px-2 hover:bg-gray-300 cursor-pointer rounded">
               <i class="fas fa-ellipsis-h pt-2 text-lg"></i>
             </span>
+            <!-- 추천 -->
+            <div
+              v-if="menu.recommended"
+              class="text-sm text-red-300 border rounded px-1"
+            >
+              추천
+            </div>
           </div>
 
           <div class="px-3">
@@ -56,11 +62,14 @@
             />
           </div>
 
+          <div class="px-3 text-sm text-gray-300">{{menu.description}}</div>
+
           <div class="px-3 pb-2">
             <div class="pt-2">
               <i class="far fa-heart cursor-pointer"></i>
               <span class="text-sm text-gray-400 font-medium"> </span>
               <div class="flex flex-col items-end">
+                <!-- price -->
                 <span class="text-sm text-gray-500 font-medium">
                   {{menu.price}}
                 </span>
@@ -71,42 +80,7 @@
       </div>
     </div>
 
-    <script>
-      let app = new Vue({
-        el: "#app",
-        data: {
-          selectedFilter: "all",
-          dearMondLogo: "./images/dearmond_logo.jpeg",
-          kindOfList: {
-            all: "전부",
-            bingsu: "빙수",
-            bread: "빵",
-            coffee: "커피",
-            latte: "라떼",
-            dutch: "더치",
-            smoothie: "스무디",
-            ade: "에이드",
-            fruitJuice: "과일쥬스",
-            tea: "티",
-            frappe: "프라페",
-            additional: "추가메뉴",
-          },
-          menus: menuArray,
-        },
-        methods: {
-          selectFilter(kindOf) {
-            this.selectedFilter = kindOf;
-          },
-          filteredMenus() {
-            if (this.selectedFilter === "all") return this.menus;
-            return this.menus.filter(
-              (menu) =>
-                menu.kindOf === this.selectedFilter ||
-                this.selectedFilter === "all"
-            );
-          },
-        },
-      });
-    </script>
+    <script src="./menus.js"></script>
+    <script src="./app.js"></script>
   </body>
 </html>
