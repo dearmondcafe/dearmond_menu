@@ -448,7 +448,7 @@ const menuArray = [
   {
     kindOf: "fruitJuice",
     name: "수박(시즌) 쥬스",
-    menuImage: "./images/menus/mock.jpg",
+    menuImage: "./images/menus/juice/watermelon_juice.jpeg",
     price: "5.8",
     new: false,
     recommended: false,
@@ -682,8 +682,8 @@ const menuArray = [
   },
   {
     kindOf: "bingsu",
-    name: "누텔라 몰티져스",
-    menuImage: "./images/menus/mock.jpg",
+    name: "누텔라 몰티저스",
+    menuImage: "./images/menus/bingsu/nutella_maltesers_scale.png",
     price: "13.0",
     new: false,
     recommended: false,
@@ -691,7 +691,7 @@ const menuArray = [
   {
     kindOf: "bingsu",
     name: "생딸기 빙수",
-    menuImage: "./images/menus/mock.jpg",
+    menuImage: "./images/menus/bingsu/berry_bingsu.jpeg",
     price: "13.0",
     new: false,
     recommended: false,
@@ -741,7 +741,7 @@ const menuArray = [
   {
     kindOf: "bread",
     name: "허니브레드",
-    menuImage: "./images/menus/mock.jpg",
+    menuImage: "./images/menus/bread/honey_bread.jpeg",
     price: "4.5",
     new: false,
     recommended: false,
